@@ -7,7 +7,8 @@ import GameBoard from "./components/GameBoard";
 ReactDOM.render(
   <React.StrictMode>
     <h2 id="title">Budee Checkerboard</h2>
-    <GameBoard n_size={5}></GameBoard>
+
+    <GameBoard></GameBoard>
   </React.StrictMode>,
   document.getElementById("root")
 );
