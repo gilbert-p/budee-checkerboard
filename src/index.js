@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+import GameBoard from "./components/GameBoard";
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Hello</h1>
+    <h2 id="title">Budee Checkerboard</h2>
+    <GameBoard n_size={5}></GameBoard>
   </React.StrictMode>,
   document.getElementById("root")
 );
