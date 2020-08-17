@@ -34,11 +34,6 @@ const GameBoard = () => {
     createGrid(boardSize);
   }, [boardSize]);
 
-  useEffect(() => {
-    function setPlayers() {}
-    setPlayers();
-  });
-
   const updateBoardSize = (e) => {
     e.preventDefault();
     setBoardSize(parseInt(e.target.value));
