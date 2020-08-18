@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/gameboard.scss";
 
 const GameBoard = () => {
@@ -6,27 +6,11 @@ const GameBoard = () => {
   const [boardSize, setBoardSize] = useState(8);
   const [classicColor, setClassicColor] = useState(true);
   const [retroColor, setRetroColor] = useState(false);
-  const [playerOneCurrentColor, setPlayerOneCurrentColor] = useState("orange");
-  const [playerTwoCurrentColor, setPlayerTwoCurrentColor] = useState("purple");
-
-  const redPlayerStyling = {
-    backgroundColor: "red",
-  };
-
-  const blackPlayerStyling = {
-    backgroundColor: "black",
-  };
-
-  const orangePlayerStyling = {
-    backgroundColor: "orange",
-  };
-
-  const purplePlayerStyling = {
-    backgroundColor: "purple",
-  };
-
-  const redPieceRef = useRef(null);
-  const blackPieceRef = useRef(null);
+  const [playerOneCurrentColor, setPlayerOneCurrentColor] = useState("red");
+  const [playerTwoCurrentColor, setPlayerTwoCurrentColor] = useState("black");
+  const [classicShape, setClassicShape] = useState(true);
+  const [squareShape, setSquareShape] = useState(false);
+  const [currentPieceShape, setCurrentPieceShape] = useState("50%");
 
   const createGrid = () => {
     let isDark = true;
@@ -81,6 +65,20 @@ const GameBoard = () => {
     createGrid();
   };
 
+  const changeShape = () => {
+    if (!squareShape) {
+      setClassicShape(false);
+      setSquareShape(true);
+      setCurrentPieceShape("0%");
+    } else {
+      setSquareShape(false);
+      setClassicShape(true);
+      setCurrentPieceShape("50%");
+    }
+
+    createGrid();
+  };
+
   return (
     <div className="game-container">
       <form>
@@ -93,10 +91,10 @@ const GameBoard = () => {
             <input
               type="radio"
               value="classic"
-              checked={classicColor}
-              onChange={changeColor}
+              checked={classicShape}
+              onChange={changeShape}
             />
-            Classic color
+            Classic shape
           </label>
         </div>
         <div className="radio">
@@ -104,10 +102,32 @@ const GameBoard = () => {
             <input
               type="radio"
               value="retro"
+              checked={squareShape}
+              onChange={changeShape}
+            />
+            Square shape
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="circle"
+              checked={classicColor}
+              onChange={changeColor}
+            />
+            Classic Color
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="square"
               checked={retroColor}
               onChange={changeColor}
             />
-            Retro color
+            Retro Color
           </label>
         </div>
       </form>
@@ -120,16 +140,20 @@ const GameBoard = () => {
                     {cells.cellIndex < boardSize * 2 ? (
                       <div
                         className="redPiece"
-                        style={{ backgroundColor: playerOneCurrentColor }}
-                        ref={redPieceRef}></div>
+                        style={{
+                          backgroundColor: playerOneCurrentColor,
+                          borderRadius: currentPieceShape,
+                        }}></div>
                     ) : null}
 
                     {cells.cellIndex >
                     boardSize * boardSize - boardSize * 2 - 1 ? (
                       <div
                         className="blackPiece"
-                        style={{ backgroundColor: playerTwoCurrentColor }}
-                        ref={blackPieceRef}></div>
+                        style={{
+                          backgroundColor: playerTwoCurrentColor,
+                          borderRadius: currentPieceShape,
+                        }}></div>
                     ) : null}
                   </div>
                 ) : (
@@ -139,16 +163,18 @@ const GameBoard = () => {
                         className="redPiece"
                         style={{
                           backgroundColor: playerOneCurrentColor,
-                        }}
-                        ref={redPieceRef}></div>
+                          borderRadius: currentPieceShape,
+                        }}></div>
                     ) : null}
 
                     {cells.cellIndex >
                     boardSize * boardSize - boardSize * 2 - 1 ? (
                       <div
                         className="blackPiece"
-                        style={{ backgroundColor: playerTwoCurrentColor }}
-                        ref={blackPieceRef}></div>
+                        style={{
+                          backgroundColor: playerTwoCurrentColor,
+                          borderRadius: currentPieceShape,
+                        }}></div>
                     ) : null}
                   </div>
                 );
