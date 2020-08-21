@@ -1,0 +1,40 @@
+$light: #d0b49c;
+$dark: #5b4337;
+
+.gameboard {
+  position: relative;
+  display: grid;
+  background-color: salmon;
+  border: 1px solid blue;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cell {
+  position: relative;
+}
+
+.dark {
+  background-color: $dark;
+}
+
+.bright {
+  background-color: $light;
+}
+
+.light_piece {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
+
+.dark_piece {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+}
+
+@media screen and (min-width: 450px) {
+}

@@ -1,0 +1,13 @@
+.main_content {
+  position: absolute;
+  display: flex;
+  width: 50vw;
+  height: 100%;
+  background-color: skyblue;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div > h2 {
+  text-transform: capitalize;
+  color: red;
+}

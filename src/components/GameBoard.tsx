@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/gameboard.scss";
 
 const GameBoard = () => {
+  {
+    /* 
   const [gridCells, setGridCells] = useState([]);
   const [boardSize, setBoardSize] = useState(8);
   const [classicColor, setClassicColor] = useState(true);
@@ -184,6 +186,8 @@ const GameBoard = () => {
       </div>
     </div>
   );
+  */
+  }
 };
 
 export default GameBoard;
